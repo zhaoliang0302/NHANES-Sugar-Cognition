@@ -1,8 +1,8 @@
 library(dplyr)
 
 #Creates new dataset combining 2011-2012 and 2013-2014 datasets
+#Foods dataset (Dr1iff) is described in TransposeFood.R
 Demo <- bind_rows(DEMO_G, DEMO_H) #Demo datasets
-Dr1iff <- bind_rows(DR1IFF_G, DR1IFF_H) #Diet datasets
 Dr1tot <- bind_rows(DR1TOT_G, DR1TOT_H) #Total diet datasets
 Bmx <- bind_rows(BMX_G, BMX_H) #Anthropometric measures datasets
 Alq <- bind_rows(ALQ_G, ALQ_H) #Alcohol datasets
@@ -15,7 +15,6 @@ Bpq <- bind_rows(BPQ_G, BPQ_H) #Hypertension datasets
 
 #Saves new dataset
 write.csv(Demo, file="Path/Demo.csv") 
-write.csv(Dr1iff, file="Path/Demo.csv") 
 write.csv(Dr1tot, file="Path/Demo.csv")
 write.csv(Bmx, file="Path/Demo.csv")
 write.csv(Alq, file="Path/Demo.csv")
