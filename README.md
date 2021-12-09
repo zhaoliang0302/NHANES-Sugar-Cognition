@@ -8,5 +8,5 @@ Order in which files must be followed:
 1. ReadSASXPORT.R
 2. BindDatasets.R
 3. TransposeFoods.R
-4. Modifying datasets
+4. ModifyDatset.R
 
