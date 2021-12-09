@@ -4,3 +4,9 @@ This contains the code used to analyze the data from the scientific paper Gonça
 
 If you make use of this code please cite our work.
 
+Order in which files must be followed: 
+1. d
+2. a
+3. TransposeFoods.R
+4. Modifying datasets
+
