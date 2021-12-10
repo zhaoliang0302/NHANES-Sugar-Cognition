@@ -126,7 +126,7 @@ write.csv(SoftEnergyDrink2, file="Path/SoftEnergyDrink2.csv") #saves
 #Sums grams of Solid desserts
 Solids7[is.na(Solids7)] = 0 #Substitutes 0 for NA
 Solids8 <- Solids7 %>% rowwise() %>% mutate(SolidsGrams = sum(c_across(13110000:91801000))) #sum grams of Solid desserts
-write.csv(SoftEnergyDrink2, file="Path/Solids8.csv") #saves
+write.csv(Solids8, file="Path/Solids8.csv") #saves
 
 #Sums grams of 100% fruit juice
 FruitJuices[is.na(FruitJuices)] = 0 #Substitutes 0 for NA
