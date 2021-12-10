@@ -4,6 +4,22 @@ library(dplyr)
 Demo <- read.csv("~/Path/Demo.csv", header=TRUE)  #opens file
 Demo2 <- select(Demo, SEQN, SDDSRVYR, RIDSTATR, RIAGENDR, RIDAGEYR, RIDRETH3, DMDMARTL, DMDEDUC2, WTINT2YR, WTMEC2YR, INDFMIN2, 
 SDMVSTRA, SDMVPSU, INDFMPIR, INDHHIN2)   #keeps only columns which will be used
+Demo3 <- Demo2 %>% rowwise() %>% mutate(Idade = ifelse(RIDAGEYR >= 60 & RIDAGEYR <= 64, “60-64”, 
+                                                                ifelse(RIDAGEYR >= 65 & RIDAGEYR <= 69, “65-69”, 
+                                                                       ifelse(RIDAGEYR >= 70 & RIDAGEYR <= 74, “70-74”, 
+                                                                              ifelse (RIDAGEYR >= 75 & RIDAGEYR <= 79, “75-79”, 
+                                                                                      ifelse (RIDAGEYR == 80, “>80”, “59”)))) #age intervals
+Demo4 <- Demo3 %>% rowwise() %>% mutate(Gender = ifelse(RIAGENDR == 1, “male”, ifelse(RIAGENDR == 2, “female”, NA))) #gender strings
+Demo5 <- Demo4 %>% rowwise() %>% mutate(Marital = ifelse(DMDMARTL == 1 | DMDMARTL == 6, “Together”, 
+                                                      ifelse(DMDMARTL == 2 | DMDMARTL == 3 | DMDMARTL == 4 DMDMARTL == 5, “Single”, NA))) #marital status 2 strings
+Demo6 <-  Demo5 %>% rowwise() %>% mutate(Education = ifelse(DMDEDUC2 == 1 | DMDEDUC2 == 2, “less high school”, 
+                                                            ifelse(DMDEDUC2 == 3, “high school”, 
+                                                                   ifelse(DMDEDUC2  == 4, “some college”, 
+                                                                          ifelse(DMDEDUC2  == 5, “college or more”, NA))) #Education attainment strings                                                       
+AcucarRaca <-  AcucarEducacao %>% rowwise() %>% mutate(Raca = ifelse(RIDRETH3 == 1 | RIDRETH3 == 2, "hispanic", 
+                                                                     ifelse(RIDRETH3 == 3, "NH white", 
+                                                                            ifelse(RIDRETH3 == 4, "NH black", 
+                                                                                   ifelse(RIDRETH3  == 6 | RIDRETH3 == 7, "Other", NA))))) #Race strings 
 write.csv(Demo2, file="~/Path/Demo2.csv") #saves
 
 #Alcohol use data
@@ -19,6 +35,16 @@ Smq3 <- Smq2 %>% rowwise() %>% mutate(SmokeYN = ifelse(SMQ020==1 & SMQ040<3, “
 ifelse(SMQ020==2, “never”, NA))) #creates new labels: "current" if smoker, "former" if former smoker and "never" if never smoked
 write.csv(Smq3, file="~/Path/Smq3.csv") #saves
 
+#Diabetes data
+Diq <- read.csv("~/Path/Diq.csv", header=TRUE)  #opens file
+Diq2 <-  Diq %>% rowwise() %>% mutate(DiabetesYN = ifelse(DIQ010 == 1, 1, ifelse(DIQ010 == 2, 0, NA))) #binary: 1 if diabetes diagnosis, 0 if not
+write.csv(Diq2, file="~/Path/Diq2.csv") #saves
+                                      
+#Hypertension data
+Bpq <- read.csv("~/Path/Bpq.csv", header=TRUE)  #opens file
+Bpq2 <-  Diq %>% rowwise() %>% mutate(HypertensionYN = ifelse(BPQ020 == 1, 1, ifelse(BPQ020 == 2, 0, NA))) #binary: 1 if hypertension diagnosis, 0 if not
+write.csv(Diq2, file="~/Path/Diq2.csv") #saves                                      
+                                      
 #Exercise data
 Paq <- read.csv("~/Path/Smq.csv", header=TRUE)  #opens file
 Paq2 <- select(Paq, SEQ, PAQ706, PAQ605, PAQ610, PAD615, PAQ620, PAQ625, PAD630, PAQ635, PAQ640, PAD645, PAQ650, PAQ655, 
