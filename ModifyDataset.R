@@ -89,6 +89,9 @@ FruitJuices2 <- read.csv("~/Path/FruitJuices2.csv", header=TRUE) #opens juices f
 FruitJuices3 <- FruitJuices2 %>% rowwise() %>% mutate(JuiceBinario = ifelse(JuiceGrams == 0, 0,
                                                                             ifelse(JuiceGrams > 0, 1, NA))) #binary: 1 if consumes 100% fruit juices, 0 if not                                                                           
 write.csv(FruitJuices3, file="~/Path/FruitJuices3.csv") #saves                                    
+Dr1tot <- read.csv("~/Path/Dr1tot.csv", header=TRUE) #opens total nutrients file
+Dr1tot2 <- Dr1tot %>% mutate(AcucarTercil = as.factor(ntile(DR1TSUGR, 3))) #divides total sugar consumption into tertiles                                     
+write.csv(Dr1tot2, file="~/Path/Dr1tot2.csv") #saves                                      
                                       
 #Cognition data
 Cfq <- read.csv("~/Path/Cfq.csv", header=TRUE)  #opens file
