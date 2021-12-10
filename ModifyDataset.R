@@ -16,11 +16,11 @@ Demo6 <-  Demo5 %>% rowwise() %>% mutate(Education = ifelse(DMDEDUC2 == 1 | DMDE
                                                             ifelse(DMDEDUC2 == 3, “high school”, 
                                                                    ifelse(DMDEDUC2  == 4, “some college”, 
                                                                           ifelse(DMDEDUC2  == 5, “college or more”, NA))) #Education attainment strings                                                       
-AcucarRaca <-  AcucarEducacao %>% rowwise() %>% mutate(Raca = ifelse(RIDRETH3 == 1 | RIDRETH3 == 2, "hispanic", 
+Demo7 <-  Demo6 %>% rowwise() %>% mutate(Raca = ifelse(RIDRETH3 == 1 | RIDRETH3 == 2, "hispanic", 
                                                                      ifelse(RIDRETH3 == 3, "NH white", 
                                                                             ifelse(RIDRETH3 == 4, "NH black", 
                                                                                    ifelse(RIDRETH3  == 6 | RIDRETH3 == 7, "Other", NA))))) #Race strings 
-write.csv(Demo2, file="~/Path/Demo2.csv") #saves
+write.csv(Demo7, file="~/Path/Demo7.csv") #saves
 
 #Alcohol use data
 Alq <- read.csv("~/Path/Alq.csv", header=TRUE) #opens file
