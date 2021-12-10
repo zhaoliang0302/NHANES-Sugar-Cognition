@@ -9,4 +9,4 @@ Order in which files must be followed:
 2. BindDatasets.R
 3. TransposeFoods.R
 4. ModifyDatset.R
-
+5. MergeDataset.R
