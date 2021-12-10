@@ -131,5 +131,5 @@ write.csv(Solids8, file="Path/Solids8.csv") #saves
 #Sums grams of 100% fruit juice
 FruitJuices[is.na(FruitJuices)] = 0 #Substitutes 0 for NA
 FruitJuices2 <- FruitJuices %>% rowwise() %>% mutate(JuiceGrams = sum(c_across(61201010:64221010)))) #sum grams of juice
-write.csv(FruitJuices2, file="D:\\IC\\NHANES Dataset\\Rdataset\\FruitJuices2.csv") #saves
+write.csv(FruitJuices2, file="Path/FruitJuices2.csv") #saves
 
