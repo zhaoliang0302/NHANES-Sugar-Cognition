@@ -10,3 +10,4 @@ Order in which files must be followed:
 3. TransposeFoods.R
 4. ModifyDatset.R
 5. MergeDataset.R
+6. Zscore.R
