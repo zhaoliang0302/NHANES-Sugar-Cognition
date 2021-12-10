@@ -70,12 +70,6 @@ Paq10 <-  Paq9 %>% rowwise() %>% mutate(TotalMETS = sum(METSVig, METSMod, na.rm=
 Paq11 <-  Paq10 %>% rowwise() %>% mutate(Exercise = ifelse(TotalMETS > 599, 1, ifelse(TotalMETS <600, 0, NA))) #binary: 1 if enough exercise, 0 if not
 write.csv(Paq11, file="~/Path/Paq11.csv") #saves
 
-#Depression data
-Dpq <- read.csv("~/Path/Dpq.csv", header=TRUE) #opens file
-Dpq2 <- Dpq %>% rowwise() %>% mutate(Result = sum(ifelse(c_across(DPQ010:DPQ090)<4, c_across(DPQ010:DPQ090), NA))) #Sums values from columns DPQ010:DPQ090, keeps NA
-Dpq3 <- Dpq2 %>% rowwise() %>% mutate(Depressao = ifelse(SomaDpq > 9, 1, 0)) #binary: 1 if person has depression (sum >9) or 0 if not
-write.csv(Dpq3, file="~/Path/Dpq3.csv") #saves
-
 #Foods data
 SoftEnergyDrink2 <- read.csv("~/Path/SoftEnergyDrink2.csv", header=TRUE) #opens SSBs file
 SoftEnergyDrink3 <- SoftEnergyDrink2 %>% rowwise() %>% mutate(RefriBinario = ifelse(RefriGrams == 0, 0, 
