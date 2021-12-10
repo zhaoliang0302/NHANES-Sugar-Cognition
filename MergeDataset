@@ -1,5 +1,5 @@
 
-
+#merges all datasets
 nhanes <- merge(x = Demo7, y = Mcq[, c("SEQN", "MCQ160F")], by= "SEQN", all.x = TRUE) #merges Demo and Mcq (stroke column) datasets
 nhanes2 <- merge(x = nhanes, y = SoftEnergyDrink3[, c("SEQN", "RefriGrams", "RefriBinario")], by= "SEQN", all.x = TRUE) #merges nhanes and SSBs datasets
 nhanes3 <- merge(x = nhanes2, y = Solids9[, c("SEQN", "SolidsGrams", "SolidsBinario")], by= "SEQN", all.x = TRUE) #merges nhanes2 and solid desserts datasets
