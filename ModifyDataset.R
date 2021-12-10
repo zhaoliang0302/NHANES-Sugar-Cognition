@@ -8,19 +8,22 @@ Demo3 <- Demo2 %>% rowwise() %>% mutate(Idade = ifelse(RIDAGEYR >= 60 & RIDAGEYR
                                                                 ifelse(RIDAGEYR >= 65 & RIDAGEYR <= 69, “65-69”, 
                                                                        ifelse(RIDAGEYR >= 70 & RIDAGEYR <= 74, “70-74”, 
                                                                               ifelse (RIDAGEYR >= 75 & RIDAGEYR <= 79, “75-79”, 
-                                                                                      ifelse (RIDAGEYR == 80, “>80”, “59”)))) #age intervals
-Demo4 <- Demo3 %>% rowwise() %>% mutate(Gender = ifelse(RIAGENDR == 1, “male”, ifelse(RIAGENDR == 2, “female”, NA))) #gender strings
-Demo5 <- Demo4 %>% rowwise() %>% mutate(Marital = ifelse(DMDMARTL == 1 | DMDMARTL == 6, “Together”, 
+                                                                                      ifelse (RIDAGEYR == 80, “>80”, “59”)))) #age intervals 5 years
+Demo4 <- Demo3 %>% rowwise() %>% mutate(Idade10 = ifelse(RIDAGEYR >= 60 & RIDAGEYR <= 69, “60-69”, 
+                                                         ifelse(RIDAGEYR >= 70 & RIDAGEYR <= 79, “70-79”, 
+                                                                ifelse(RIDAGEYR == 80, “>80”, “59”)))) ##age intervals 10 years
+Demo5 <- Demo4 %>% rowwise() %>% mutate(Gender = ifelse(RIAGENDR == 1, “male”, ifelse(RIAGENDR == 2, “female”, NA))) #gender strings
+Demo6 <- Demo5 %>% rowwise() %>% mutate(Marital = ifelse(DMDMARTL == 1 | DMDMARTL == 6, “Together”, 
                                                       ifelse(DMDMARTL == 2 | DMDMARTL == 3 | DMDMARTL == 4 DMDMARTL == 5, “Single”, NA))) #marital status 2 strings
-Demo6 <-  Demo5 %>% rowwise() %>% mutate(Education = ifelse(DMDEDUC2 == 1 | DMDEDUC2 == 2, “less high school”, 
+Demo7 <-  Demo6 %>% rowwise() %>% mutate(Education = ifelse(DMDEDUC2 == 1 | DMDEDUC2 == 2, “less high school”, 
                                                             ifelse(DMDEDUC2 == 3, “high school”, 
                                                                    ifelse(DMDEDUC2  == 4, “some college”, 
                                                                           ifelse(DMDEDUC2  == 5, “college or more”, NA))) #Education attainment strings                                                       
-Demo7 <-  Demo6 %>% rowwise() %>% mutate(Raca = ifelse(RIDRETH3 == 1 | RIDRETH3 == 2, "hispanic", 
+Demo8 <-  Demo7 %>% rowwise() %>% mutate(Raca = ifelse(RIDRETH3 == 1 | RIDRETH3 == 2, "hispanic", 
                                                                      ifelse(RIDRETH3 == 3, "NH white", 
                                                                             ifelse(RIDRETH3 == 4, "NH black", 
                                                                                    ifelse(RIDRETH3  == 6 | RIDRETH3 == 7, "Other", NA))))) #Race strings 
-write.csv(Demo7, file="~/Path/Demo7.csv") #saves
+write.csv(Demo8, file="~/Path/Demo8.csv") #saves
 
 #Alcohol use data
 Alq <- read.csv("~/Path/Alq.csv", header=TRUE) #opens file
@@ -73,9 +76,23 @@ Dpq2 <- Dpq %>% rowwise() %>% mutate(Result = sum(ifelse(c_across(DPQ010:DPQ090)
 Dpq3 <- Dpq2 %>% rowwise() %>% mutate(Depressao = ifelse(SomaDpq > 9, 1, 0)) #binary: 1 if person has depression (sum >9) or 0 if not
 write.csv(Dpq3, file="~/Path/Dpq3.csv") #saves
 
+#Foods data
+SoftEnergyDrink2 <- read.csv("~/Path/SoftEnergyDrink2.csv", header=TRUE) #opens SSBs file
+SoftEnergyDrink3 <- SoftEnergyDrink2 %>% rowwise() %>% mutate(RefriBinario = ifelse(RefriGrams == 0, 0, 
+                                                                                    ifelse(RefriGrams > 0, 1, NA))) #binary: 1 if consumes SSBs, 0 if not
+write.csv(SoftEnergyDrink3, file="~/Path/SoftEnergyDrink3.csv") #saves
+Solids8 <- read.csv("~/Path/Solids8.csv", header=TRUE) #opens solid desserts file
+Solids9 <- Solids8 %>% rowwise() %>% mutate(SolidsBinario = ifelse(SolidsGrams == 0, 0,
+                                                                   ifelse(SolidsGrams > 0, 1, NA))) #binary: 1 if consumes solid desserts, 0 if not                                                                           
+write.csv(Solids9, file="~/Path/Solids9.csv") #saves                                      
+FruitJuices2 <- read.csv("~/Path/FruitJuices2.csv", header=TRUE) #opens juices file
+FruitJuices3 <- FruitJuices2 %>% rowwise() %>% mutate(JuiceBinario = ifelse(JuiceGrams == 0, 0,
+                                                                            ifelse(JuiceGrams > 0, 1, NA))) #binary: 1 if consumes 100% fruit juices, 0 if not                                                                           
+write.csv(FruitJuices3, file="~/Path/FruitJuices3.csv") #saves                                    
+                                      
 #Cognition data
 Cfq <- read.csv("~/Path/Cfq.csv", header=TRUE)  #opens file
 Cfq2 <- select(Cfq, SEQN, CFASTAT, CFDCCS, CFDCST1, CFDCST2, CFDCST3, CFDCSR, CFDCIT1, CFDCIT2, CFDCIT3, CFDCIR, CFDAPP, CFDAST, 
 CFDDPP, CFDDS) #keeps only columns which will be used
 Cfq3 <- Cfq2 %>% rowwise() %>% mutate(SumCerad = sum(c_across(CFDCST1 :CFDCST3))) #sums 3 learning memory scores
-write.csv(Cfq3, file="~/Path/Cfq5.csv") #saves
+write.csv(Cfq3, file="~/Path/Cfq3.csv") #saves
