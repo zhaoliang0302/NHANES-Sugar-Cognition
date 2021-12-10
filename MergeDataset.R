@@ -13,3 +13,4 @@ nhanes10 <- merge(x = nhanes9, y = Diq2[, c("SEQN", "DiabetesYN")], by= "SEQN", 
 nhanes11 <- merge(x = nhanes10, y = Bpq2[, c("SEQN", "HypertensionYN")], by= "SEQN", all.x = TRUE) #merges nhanes10 and hypertension datasets
 nhanes12 <- merge(x = nhanes11, y = Cfq3[, c("SEQN", "CFASTAT", "CFDCCS", "CFDCST1", "CFDCST2", "CFDCST3", "CFDCSR", "CFDCIT1", "CFDCIT2", "CFDCIT3",
 "CFDCIR", "CFDAPP", "CFDAST", "CFDDPP", "CFDDS", "SumCerad")], by= "SEQN", all.x = TRUE) #merges nhanes11 and cognition datasets
+write.csv(nhanes12, file="~/Path/nhanes12.csv") #saves
