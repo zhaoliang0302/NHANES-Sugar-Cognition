@@ -45,8 +45,8 @@ write.csv(Diq2, file="~/Path/Diq2.csv") #saves
                                       
 #Hypertension data
 Bpq <- read.csv("~/Path/Bpq.csv", header=TRUE)  #opens file
-Bpq2 <-  Diq %>% rowwise() %>% mutate(HypertensionYN = ifelse(BPQ020 == 1, 1, ifelse(BPQ020 == 2, 0, NA))) #binary: 1 if hypertension diagnosis, 0 if not
-write.csv(Diq2, file="~/Path/Diq2.csv") #saves                                      
+Bpq2 <-  Bpq %>% rowwise() %>% mutate(HypertensionYN = ifelse(BPQ020 == 1, 1, ifelse(BPQ020 == 2, 0, NA))) #binary: 1 if hypertension diagnosis, 0 if not
+write.csv(Bpq2, file="~/Path/Bpq2.csv") #saves                                      
                                       
 #Exercise data
 Paq <- read.csv("~/Path/Smq.csv", header=TRUE)  #opens file
