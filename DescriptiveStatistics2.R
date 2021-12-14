@@ -1,54 +1,54 @@
 library(survey)
 
-#statistics (weighted, not adjusted)
+#descriptive statistics 
 #normality test age
-shapiro.test(svytable( ~ RIDAGEYR, DescStat16))
-svyhist( ~ RIDAGEYR, DescStat16)
+shapiro.test(svytable( ~ RIDAGEYR, survey19))
+svyhist( ~ RIDAGEYR, survey19)
 
 #normality test BMI
-shapiro.test(svytable( ~ BMXBMI, DescStat16))
-svyhist( ~ BMXBMI, DescStat16)
+shapiro.test(svytable( ~ BMXBMI, survey19))
+svyhist( ~ BMXBMI, survey19)
 
 #notmality test total calories
-shapiro.test(svytable( ~ DR1TKCAL, DescStat16))
-svyhist( ~ DR1TKCAL, DescStat16)
+shapiro.test(svytable( ~ DR1TKCAL, survey19))
+svyhist( ~ DR1TKCAL, survey19)
 
 #Wilcoxon age, BMI, TotalKcal 
-svyranktest(RIDAGEYR~CognicaoBinario, design = Acucar34, test = "wilcoxon")
-svyranktest(BMXBMI~CognicaoBinario, design = Acucar34, test = "wilcoxon")
-svyranktest(DR1TKCAL~CognicaoBinario, design = Acucar34, test = "wilcoxon")
+svyranktest(RIDAGEYR~CognicaoBinario, design = survey19, test = "wilcoxon")
+svyranktest(BMXBMI~CognicaoBinario, design = survey19, test = "wilcoxon")
+svyranktest(DR1TKCAL~CognicaoBinario, design = survey19, test = "wilcoxon")
 
 #chisquare categorical variables
-chisq.test(svytable(RIAGENDR~CognicaoBinario, design = ResultadosDemo36))
-chisq.test(svytable(DMDMARTL~CognicaoBinario, design = ResultadosDemo36))
-chisq.test(svytable(RIDRETH3~CognicaoBinario, design = ResultadosDemo36))
-chisq.test(svytable(DMDEDUC2~CognicaoBinario, design = ResultadosDemo36))
-chisq.test(svytable(Exercise~CognicaoBinario, design = ResultadosDemo36))
-chisq.test(svytable(HipertensaoYN~CognicaoBinario, design = ResultadosDemo36))
-chisq.test(svytable(DiabetesYN~CognicaoBinario, design = ResultadosDemo36))
-chisq.test(svytable(AlcoholYN~CognicaoBinario, design = ResultadosDemo36))
-chisq.test(svytable(SmokeYNN~CognicaoBinario, design = ResultadosDemo36))
+chisq.test(svytable(RIAGENDR~CognicaoBinario, design = survey19))
+chisq.test(svytable(DMDMARTL~CognicaoBinario, design = survey19))
+chisq.test(svytable(RIDRETH3~CognicaoBinario, design = survey19))
+chisq.test(svytable(DMDEDUC2~CognicaoBinario, design = survey19))
+chisq.test(svytable(Exercise~CognicaoBinario, design = survey19))
+chisq.test(svytable(HipertensaoYN~CognicaoBinario, design = survey19))
+chisq.test(svytable(DiabetesYN~CognicaoBinario, design = survey19))
+chisq.test(svytable(AlcoholYN~CognicaoBinario, design = survey19))
+chisq.test(svytable(SmokeYNN~CognicaoBinario, design = survey19))
 
 #normality test cognition variables
 #memory
-shapiro.test(svytable( ~ SumCerad, DescStat16)) 
-svyhist( ~ SumCerad, DescStat16)
+shapiro.test(svytable( ~ SumCerad, survey19)) 
+svyhist( ~ SumCerad, survey19)
 
 #delayed memory
-shapiro.test(svytable( ~ CFDCSR, DescStat16)) 
-svyhist( ~ CFDCSR, DescStat16)
+shapiro.test(svytable( ~ CFDCSR, survey19)) 
+svyhist( ~ CFDCSR, survey19)
 
 #verbal fluency
-shapiro.test(svytable( ~ CFDAST, DescStat16)) 
-svyhist( ~ CFDAST, DescStat16)
+shapiro.test(svytable( ~ CFDAST, survey19)) 
+svyhist( ~ CFDAST, survey19)
 
 #digit symbol
-shapiro.test(svytable( ~ CFDDS, DescStat16)) 
-svyhist( ~ CFDDS, DescStat16)
+shapiro.test(svytable( ~ CFDDS, survey19)) 
+svyhist( ~ CFDDS, survey19)
 
 #T test and Wilcoxon
-svyranktest(SumCerad~CognicaoBinario, design = Acucar34, test = "wilcoxon") #memory, non parametric
-svyttest(CFDCSR~CognicaoBinario, design = Acucar34) #delayed memory, parametric
-svyranktest(CFDAST~CognicaoBinario, design = Acucar34, test = "wilcoxon") #verbal fluency, non parametric
-svyranktest(CFDDS~CognicaoBinario, design = Acucar34, test = "wilcoxon") #digit symbol,non parametric
+svyranktest(SumCerad~CognicaoBinario, design = survey19, test = "wilcoxon") #memory, non parametric
+svyttest(CFDCSR~CognicaoBinario, design = survey19) #delayed memory, parametric
+svyranktest(CFDAST~CognicaoBinario, design = survey19, test = "wilcoxon") #verbal fluency, non parametric
+svyranktest(CFDDS~CognicaoBinario, design = survey19, test = "wilcoxon") #digit symbol,non parametric
 
