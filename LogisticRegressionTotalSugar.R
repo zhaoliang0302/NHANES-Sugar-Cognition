@@ -1,4 +1,5 @@
 library(survey)
+library(questionr)
 
 #quasibinomial test acommodates weighted data
 
