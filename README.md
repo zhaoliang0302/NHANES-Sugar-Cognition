@@ -14,3 +14,5 @@ Order in which files must be followed:
 7. DescritiveTable1.R
 8. SurveyExclusion.R
 9. DescritiveStatistics.R
+10. LogisticRegressionTotalSugar.R
+11. LogisticRegressionFoodGroups.R
