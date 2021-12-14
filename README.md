@@ -11,3 +11,6 @@ Order in which files must be followed:
 4. ModifyDatset.R
 5. MergeDataset.R
 6. Zscore.R
+7. DescritiveTable1.R
+8. SurveyExclusion.R
+9. DescritiveStatistics.R
