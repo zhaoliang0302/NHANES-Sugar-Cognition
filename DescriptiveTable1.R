@@ -25,70 +25,128 @@ write.csv(DescTable16, file="~/Path/DescTable16.csv") #saves
 
 #Absolute numbers
 #age
-DescTable16 %>% group_by(RIDAGEYR) %>% count (CognicaoBinario) #counts participants with and without cognitive deficit by age
-DescTable16 %>% summarise(count = mean(RIDAGEYR)) #mean age of participants (total sample)
-DescTable16 %>% summarise(count = sd(RIDAGEYR)) #standard deviation of participants by age (total sample)
+DescTable16 %>% 
+  group_by(RIDAGEYR) %>% 
+  count(CognicaoBinario) #counts participants with and without cognitive deficit by age
+DescTable16 %>% 
+  summarise(count = mean(RIDAGEYR)) #mean age of participants (total sample)
+DescTable16 %>% 
+  summarise(count = sd(RIDAGEYR)) #standard deviation of participants by age (total sample)
 
 #gender
-DescTable16 %>% group_by(Gender) %>% count (CognicaoBinario) #counts participants with and without cognitive deficit by gender
+DescTable16 %>%   
+  group_by(Gender) %>% 
+  count(CognicaoBinario) #counts participants with and without cognitive deficit by gender
 
 #race
-DescTable16 %>% group_by(Raca) %>% count (CognicaoBinario) #counts participants with and without cognitive deficit by race
+DescTable16 %>%   
+  group_by(Raca) %>% 
+  count(CognicaoBinario) #counts participants with and without cognitive deficit by race
 
 #education
-DescTable16 %>% group_by(Education) %>% count (CognicaoBinario) #counts participants with and without cognitive deficit by education attainment
+DescTable16 %>% 
+  group_by(Education) %>% 
+  count(CognicaoBinario) #counts participants with and without cognitive deficit by education attainment
 
 #marital status
-DescTable16 %>% group_by(Marital) %>% count (CognicaoBinario) #counts participants with and without cognitive deficit by marital status
+DescTable16 %>% 
+  group_by(Marital) %>% 
+  count(CognicaoBinario) #counts participants with and without cognitive deficit by marital status
 
 #BMI
-DescTable16 %>% group_by(CognicaoBinario) %>% summarise(count = mean(BMXBMI)) #counts participants with and without cognitive deficit by mean BMI
-DescTable16 %>% group_by(CognicaoBinario) %>% summarise(count = sd(BMXBMI)) #counts participants with and without cognitive deficit by standard deviation of BMI
-DescTable16 %>% summarise(count = mean(BMXBMI)) #mean BMI of participants (total sample)
-DescTable16 %>% summarise(count = sd(BMXBMI)) #standard deviation of participants by BMI (total sample)
+DescTable16 %>% 
+  group_by(CognicaoBinario) %>% 
+  summarise(count = mean(BMXBMI)) #counts participants with and without cognitive deficit by mean BMI
+DescTable16 %>% 
+  group_by(CognicaoBinario) %>% 
+  summarise(count = sd(BMXBMI)) #counts participants with and without cognitive deficit by standard deviation of BMI
+DescTable16 %>% 
+  summarise(count = mean(BMXBMI)) #mean BMI of participants (total sample)
+DescTable16 %>% 
+  summarise(count = sd(BMXBMI)) #standard deviation of participants by BMI (total sample)
 
 #total calorie intake
-DescTable16 %>% group_by(CognicaoBinario) %>% summarise(count = mean(DR1TKCAL)) #counts participants with and without cognitive deficit by mean calorie intake
-DescTable16 %>% group_by(CognicaoBinario) %>% summarise(count = sd(DR1TKCAL)) #counts participants with and without cognitive deficit by standard deviation of calorie intake
-DescTable16 %>% summarise(count = mean(DR1TKCAL)) #mean calorie intake of participants (total sample)
-DescTable16 %>% summarise(count = sd(DR1TKCAL)) #standard deviation of participants by caloria intake (total sample)
+DescTable16 %>% 
+  group_by(CognicaoBinario) %>% 
+  summarise(count = mean(DR1TKCAL)) #counts participants with and without cognitive deficit by mean calorie intake
+DescTable16 %>% 
+  group_by(CognicaoBinario) %>% 
+  summarise(count = sd(DR1TKCAL)) #counts participants with and without cognitive deficit by standard deviation of calorie intake
+DescTable16 %>% 
+  summarise(count = mean(DR1TKCAL)) #mean calorie intake of participants (total sample)
+DescTable16 %>% 
+  summarise(count = sd(DR1TKCAL)) #standard deviation of participants by caloria intake (total sample)
 
 #exercise
-DescTable16 %>% group_by(Exercise) %>% count (CognicaoBinario) #counts participants with and without cognitive deficit by exercise (enough or not)
+DescTable16 %>% 
+  group_by(Exercise) %>% 
+  count(CognicaoBinario) #counts participants with and without cognitive deficit by exercise (enough or not)
 
 #hypertension
-DescTable16 %>% group_by(HipertensaoYN) %>% count (CognicaoBinario) #counts participants with and without cognitive deficit by hypertension (yes or no)
+DescTable16 %>% 
+  group_by(HipertensaoYN) %>% 
+  count(CognicaoBinario) #counts participants with and without cognitive deficit by hypertension (yes or no)
 
 #diabetes
-DescTable16 %>% group_by(DiabetesYN) %>% count (CognicaoBinario) #counts participants with and without cognitive deficit by diabetes (yes or no)
+DescTable16 %>% 
+  group_by(DiabetesYN) %>% 
+  count(CognicaoBinario) #counts participants with and without cognitive deficit by diabetes (yes or no)
 
 #alcohol consumption
-DescTable16 %>% group_by(AlcoholYN) %>% count (CognicaoBinario) #counts participants with and without cognitive deficit by alcohol consumption (yes or no)
+DescTable16 %>% 
+  group_by(AlcoholYN) %>% 
+  count(CognicaoBinario) #counts participants with and without cognitive deficit by alcohol consumption (yes or no)
 
 #smoking
-DescTable16 %>% group_by(SmokeYN) %>% count (CognicaoBinario) #counts participants with and without cognitive deficit by smiking status (current, former, never)
+DescTable16 %>%
+  group_by(SmokeYN) %>% 
+  count(CognicaoBinario) #counts participants with and without cognitive deficit by smiking status (current, former, never)
 
 #memory score
-DescTable16 %>% group_by(CognicaoBinario) %>% summarise(count = mean(SumCerad)) #counts participants with and without cognitive deficit by mean memory score
-DescTable16 %>% group_by(CognicaoBinario) %>% summarise(count = sd(SumCerad)) #counts participants with and without cognitive deficit by standard deviation of memory score
-DescTable16 %>% summarise(count = mean(SumCerad)) #mean memory score of participants (total sample)
-DescTable16 %>% summarise(count = sd(SumCerad)) #standard deviation of participants by memory score (total sample)
+DescTable16 %>% 
+  group_by(CognicaoBinario) %>% 
+  summarise(count = mean(SumCerad)) #counts participants with and without cognitive deficit by mean memory score
+DescTable16 %>% 
+  group_by(CognicaoBinario) %>% 
+  summarise(count = sd(SumCerad)) #counts participants with and without cognitive deficit by standard deviation of memory score
+DescTable16 %>% 
+  summarise(count = mean(SumCerad)) #mean memory score of participants (total sample)
+DescTable16 %>% 
+  summarise(count = sd(SumCerad)) #standard deviation of participants by memory score (total sample)
 
 #delayed memory score
-DescTable16 %>% group_by(CognicaoBinario) %>% summarise(count = mean(CFDCSR)) #counts participants with and without cognitive deficit by mean delayed memory score
-DescTable16 %>% group_by(CognicaoBinario) %>% summarise(count = sd(CFDCSR)) #counts participants with and without cognitive deficit by standard deviation of delayed memory score
-DescTable16 %>% summarise(count = mean(CFDCSR)) #mean delayed memory score of participants (total sample)
-DescTable16 %>% summarise(count = sd(CFDCSR)) #standard deviation of participants by delayed memory score (total sample)
+DescTable16 %>% 
+  group_by(CognicaoBinario) %>% 
+  summarise(count = mean(CFDCSR)) #counts participants with and without cognitive deficit by mean delayed memory score
+DescTable16 %>% 
+  group_by(CognicaoBinario) %>% 
+  summarise(count = sd(CFDCSR)) #counts participants with and without cognitive deficit by standard deviation of delayed memory score
+DescTable16 %>% 
+  summarise(count = mean(CFDCSR)) #mean delayed memory score of participants (total sample)
+DescTable16 %>% 
+  summarise(count = sd(CFDCSR)) #standard deviation of participants by delayed memory score (total sample)
 
 #verbal fluency score
-DescTable16 %>% group_by(CognicaoBinario) %>% summarise(count = mean(CFDAST)) #counts participants with and without cognitive deficit by mean verbal fluency score
-DescTable16 %>% group_by(CognicaoBinario) %>% summarise(count = sd(CFDAST)) #counts participants with and without cognitive deficit by standard deviation of verbal fluency score
-DescTable16 %>% summarise(count = mean(CFDAST)) #mean verbal fluency score of participants (total sample)
-DescTable16 %>% summarise(count = sd(CFDAST)) #standard deviation of participants by verbal fluency score (total sample)
+DescTable16 %>% 
+  group_by(CognicaoBinario) %>% 
+  summarise(count = mean(CFDAST)) #counts participants with and without cognitive deficit by mean verbal fluency score
+DescTable16 %>% 
+  group_by(CognicaoBinario) %>% 
+  summarise(count = sd(CFDAST)) #counts participants with and without cognitive deficit by standard deviation of verbal fluency score
+DescTable16 %>% 
+  summarise(count = mean(CFDAST)) #mean verbal fluency score of participants (total sample)
+DescTable16 %>% 
+  summarise(count = sd(CFDAST)) #standard deviation of participants by verbal fluency score (total sample)
 
 #digit symbol score
-DescTable16 %>% group_by(CognicaoBinario) %>% summarise(count = mean(CFDDS)) #counts participants with and without cognitive deficit by mean digit symbol score
-DescTable16 %>% group_by(CognicaoBinario) %>% summarise(count = sd(CFDDS)) #counts participants with and without cognitive deficit by standard deviation of digit symbol score
-DescTable16 %>% summarise(count = mean(CFDDS)) #mean digit symbol score of participants (total sample)
-DescTable16 %>% summarise(count = sd(CFDDS)) #standard deviation of participants by digit symbol score (total sample)
+DescTable16 %>% 
+  group_by(CognicaoBinario) %>% 
+  summarise(count = mean(CFDDS)) #counts participants with and without cognitive deficit by mean digit symbol score
+DescTable16 %>% 
+  group_by(CognicaoBinario) %>% 
+  summarise(count = sd(CFDDS)) #counts participants with and without cognitive deficit by standard deviation of digit symbol score
+DescTable16 %>% 
+  summarise(count = mean(CFDDS)) #mean digit symbol score of participants (total sample)
+DescTable16 %>% 
+  summarise(count = sd(CFDDS)) #standard deviation of participants by digit symbol score (total sample)
 
